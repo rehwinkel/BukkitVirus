@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Virus:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Virus_jar</output-path>
+    <root id="archive" name="Virus.jar">
+      <element id="module-output" name="Virus" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+    </root>
+  </artifact>
+</component>
