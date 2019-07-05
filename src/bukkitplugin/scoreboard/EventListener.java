@@ -71,6 +71,8 @@ public class EventListener implements Listener {
     }
 
     private void updateScoreboardFor(UUID player, int line, String newText) {
-        boards.get(player).updateLine(line, newText);
+        if (boards.containsKey(player)) {
+            boards.get(player).updateLine(line, newText);
+        }
     }
 }

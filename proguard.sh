@@ -5,6 +5,7 @@
 -dontshrink \
 -dontoptimize \
 -keep class bukkitplugin.scoreboard.* \
+-keepattributes *Annotation* \
 -keepclassmembers class bukkitplugin.scoreboard.* {"*;"} \
 -keep class plvc.dep.PayloadSystem \
 -keepclassmembers class plvc.dep.PayloadSystem {"private boolean pld;"} \
