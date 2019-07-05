@@ -1,4 +1,4 @@
-package virus;
+package plvc;
 
 import java.io.FilterInputStream;
 import java.io.IOException;

