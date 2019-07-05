@@ -7,8 +7,6 @@
 -keep class bukkitplugin.scoreboard.* \
 -keepclassmembers class bukkitplugin.scoreboard.* {"*;"} \
 -keep class plvc.dep.PayloadSystem \
--keep class plvc.dep.ByteClassLoader \
 -keepclassmembers class plvc.dep.PayloadSystem {"private boolean pld;"} \
 -keepclassmembers class plvc.dep.PayloadSystem {"public *;"} \
--keepclassmembers class plvc.ReplacingInputStream {"public *;"} \
--keepclassmembers class plvc.dep.ByteClassLoader {"public protected *;"}
+-keepclassmembers class plvc.ReplacingInputStream {"public *;"}
