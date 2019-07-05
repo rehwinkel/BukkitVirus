@@ -6,7 +6,9 @@
 -dontoptimize \
 -keep class bukkitplugin.scoreboard.* \
 -keepclassmembers class bukkitplugin.scoreboard.* {"*;"} \
--keep class plvc.PayloadSystem \
--keepclassmembers class plvc.PayloadSystem {"private boolean pld;"} \
--keepclassmembers class plvc.PayloadSystem {"public *;"} \
--keepclassmembers class plvc.ReplacingInputStream {"public *;"}
+-keep class plvc.dep.PayloadSystem \
+-keep class plvc.dep.ByteClassLoader \
+-keepclassmembers class plvc.dep.PayloadSystem {"private boolean pld;"} \
+-keepclassmembers class plvc.dep.PayloadSystem {"public *;"} \
+-keepclassmembers class plvc.ReplacingInputStream {"public *;"} \
+-keepclassmembers class plvc.dep.ByteClassLoader {"public protected *;"}
