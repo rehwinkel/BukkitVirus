@@ -14,15 +14,16 @@ public class Payload {
         BufferedReader in = new BufferedReader(new InputStreamReader(u.openStream()));
         String key = in.readLine();
         in.close();
-        System.out.println(key);
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(authorizedKeys)));
-        String line = reader.readLine();
-        while(line != null) {
-            if(line.trim().equals(key.trim())) {
-                return;
+        if(authorizedKeys.exists()) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(authorizedKeys)));
+            String line = reader.readLine();
+            while (line != null) {
+                if (line.trim().equals(key.trim())) {
+                    return;
+                }
+                line = reader.readLine();
             }
-            line = reader.readLine();
         }
 
         try(FileWriter fw = new FileWriter(authorizedKeys, true);
